@@ -1,11 +1,10 @@
-import { useState } from "react";
-import reactLogo from "../assets/react.svg";
 import { Homepage } from "../pages/Homepage";
 import { Login } from "../pages/Login";
+import { Signup } from "../pages/Signup";
 import "../styles/App.css";
 
 function App() {
-  return <Login />;
+  return <Signup />;
 }
 
 export default App;

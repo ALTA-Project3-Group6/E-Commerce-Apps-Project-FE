@@ -17,6 +17,8 @@ export const Login = () => {
         <div className="flex gap-7 items-center mb-6">
           <MdEmail className="w-9 h-9" />
           <input
+            type="email"
+            name="email"
             className="w-full bg-[#F5F5F5] p-4"
             placeholder="Email"
           ></input>
@@ -24,6 +26,8 @@ export const Login = () => {
         <div className="flex gap-7 items-center">
           <MdLock className="w-9 h-9" />
           <input
+            type="password"
+            name="ConfirmPassword"
             className="w-full bg-[#F5F5F5] p-4"
             placeholder="Password"
           ></input>
