@@ -49,7 +49,7 @@ export const AddProduct = () => {
           <input type="file" className="file-input flex" />
         </div>
         <div className="flex  absolute bottom-0 w-full">
-          <button className="btn rounded-none font-normal h-16 w-full text-xl rou">
+          <button className="btn rounded-none font-normal h-16 w-full text-xl">
             CREATE PRODUCT
           </button>
         </div>

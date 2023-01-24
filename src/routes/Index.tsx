@@ -12,7 +12,7 @@ import { TransactionSelling } from "../pages/TransactionSelling";
 import "../styles/App.css";
 
 function App() {
-  return <TransactionSelling />;
+  return <DetailProduct />;
 }
 
 export default App;
