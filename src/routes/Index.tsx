@@ -4,7 +4,7 @@ import { Signup } from "../pages/Signup";
 import "../styles/App.css";
 
 function App() {
-  return <Signup />;
+  return <Homepage />;
 }
 
 export default App;
