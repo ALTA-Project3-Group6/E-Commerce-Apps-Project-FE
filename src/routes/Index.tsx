@@ -7,10 +7,12 @@ import { Login } from "../pages/Login";
 import Profile from "../pages/Profile";
 import { Signup } from "../pages/Signup";
 import { Summary } from "../pages/Summary";
+import { TransactionBuying } from "../pages/TransactionBuying";
+import { TransactionSelling } from "../pages/TransactionSelling";
 import "../styles/App.css";
 
 function App() {
-  return <EditProduct />;
+  return <TransactionSelling />;
 }
 
 export default App;
