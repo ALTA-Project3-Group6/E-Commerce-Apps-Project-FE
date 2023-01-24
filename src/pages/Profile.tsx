@@ -59,9 +59,7 @@ const Profile = () => {
         </div>
         <div className="flex gap-7 items-center mb-20">
           <MdPhoto className="w-9 h-9" />
-          <button className="btn rounded-none flex  font-normal ">
-            <span className="w-full p-4 ">Add profile image</span>
-          </button>
+          <input type="file" className="file-input w-full max-w-xs" />
         </div>
         <div className="flex gap-7 items-center mb-6">
           <MdLock className="w-9 h-9" />
@@ -71,13 +69,15 @@ const Profile = () => {
             className="w-full bg-[#F5F5F5] p-4"
             placeholder="Password"
           ></input>
+        </div>{" "}
+        <div className="flex justify-around">
+          <button className="btn rounded-none border-none w-40 font-normal mt-20 ">
+            Cancel
+          </button>
+          <button className="btn bg-[#1F8A70] border-none rounded-none w-40 font-normal mt-20 ">
+            Save
+          </button>
         </div>
-        <button className="btn rounded-none w-44 font-normal mt-20 m-5">
-          Cancel
-        </button>
-        <button className="btn bg-red-500 rounded-none w-44 font-normal mt-20 m-5">
-          Save
-        </button>
       </div>
     </LayoutPlain>
   );
