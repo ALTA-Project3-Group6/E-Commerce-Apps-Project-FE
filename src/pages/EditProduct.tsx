@@ -1,7 +1,30 @@
 import React from "react";
 import { Layout } from "../components/Layout";
+import { useParams } from "react-router";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { ProductType } from "../utils/types/e-commerce";
 
 export const EditProduct = () => {
+  const [product, setProduct] = useState<ProductType>();
+  const { id_product } = useParams();
+
+  useEffect(() => {
+    fetchDataProduct();
+  }, []);
+
+  function fetchDataProduct() {
+    axios
+      .get(`https://bluepath.my.id/products/${id_product}`)
+      .then((res) => {
+        setProduct(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        alert(err.toString());
+      });
+  }
+
   return (
     <Layout>
       <div className="relative h-full">
