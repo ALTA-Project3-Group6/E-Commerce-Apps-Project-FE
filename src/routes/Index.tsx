@@ -11,9 +11,61 @@ import { TransactionBuying } from "../pages/TransactionBuying";
 import { TransactionSelling } from "../pages/TransactionSelling";
 import Profile from "../pages/Profile";
 import "../styles/App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Homepage />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "/detail-product/:id_product",
+    element: <DetailProduct />,
+  },
+  {
+    path: "/add-product",
+    element: <AddProduct />,
+  },
+  {
+    path: "/edit-product/:id_product",
+    element: <EditProduct />,
+  },
+  {
+    path: "/profile/:id_user",
+    element: <Profile />,
+  },
+  {
+    path: "/edit-profile/:id_user",
+    element: <EditProfile />,
+  },
+  {
+    path: "/cart",
+    element: <Cart />,
+  },
+  {
+    path: "/summary",
+    element: <Summary />,
+  },
+  {
+    path: "/transaction-buy/:id_user",
+    element: <TransactionBuying />,
+  },
+  {
+    path: "/transaction-sell/:id_user",
+    element: <TransactionSelling />,
+  },
+]);
 
 function App() {
-  return <Profile />;
+  return <RouterProvider router={router} />;
 }
 
 export default App;

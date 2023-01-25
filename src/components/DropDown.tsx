@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import { BsThreeDots } from "react-icons/bs";
 
 export const DropDown = () => {
@@ -13,7 +13,9 @@ export const DropDown = () => {
         className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
       >
         <li>
-          <a>Edit Product</a>
+          <Link to={"/edit-product/:id_product"}>
+            <a>Edit Product</a>
+          </Link>
         </li>
         <li>
           <a>Delete Product</a>
