@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import { Layout } from "../components/Layout";
 
 export const TransactionSelling = () => {
@@ -8,9 +8,11 @@ export const TransactionSelling = () => {
         <div className="px-3 font-medium">
           <h1 className="pt-5 text-3xl mb-9 font-medium">TRANSACTION</h1>
           <div className="mb-9">
-            <button className="btn rounded-none w-32 font-normal bg-[#EEEEEE] border-none text-[#000000]">
-              BUY
-            </button>
+            <Link to={"/transaction-buy/:id_user"}>
+              <button className="btn rounded-none w-32 font-normal bg-[#EEEEEE] border-none text-[#000000]">
+                BUY
+              </button>
+            </Link>
             <button className="btn rounded-none w-32 font-normal ">SELL</button>
           </div>
           <div className="border-2 bg-[#F0F0F0] p-3 text-left border-[#D9D9D9]">

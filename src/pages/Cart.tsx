@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import { Layout } from "../components/Layout";
 
 export const Cart = () => {
@@ -87,9 +87,11 @@ export const Cart = () => {
             <button className="btn rounded-none border-none font-normal h-16 w-full bg-[#CD0404] mb-1 text-xl">
               CLEAR CART
             </button>
-            <button className="btn rounded-none font-normal h-16 w-full text-xl">
-              CHECKOUT
-            </button>
+            <Link to={"/summary"}>
+              <button className="btn rounded-none font-normal h-16 w-full text-xl">
+                CHECKOUT
+              </button>
+            </Link>
           </div>
         </div>
       </div>

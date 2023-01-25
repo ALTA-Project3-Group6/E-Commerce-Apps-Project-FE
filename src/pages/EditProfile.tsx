@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import { LayoutPlain } from "../components/Layout";
 import { ImArrowLeft2 } from "react-icons/im";
 import {
@@ -14,7 +14,9 @@ const Profile = () => {
   return (
     <LayoutPlain>
       <div className="px-7 py-16">
-        <ImArrowLeft2 className="mb-7 h-7 w-7 cursor-pointer" />
+        <Link to={"/profile/:id_user"}>
+          <ImArrowLeft2 className="mb-7 h-7 w-7 cursor-pointer" />
+        </Link>
         <h4
           style={{ fontFamily: "Lato" }}
           className="font-black text-4xl tracking-widest mb-20"

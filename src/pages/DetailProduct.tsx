@@ -1,5 +1,4 @@
-import React from "react";
-import { BsThreeDots } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import { ImArrowLeft2 } from "react-icons/im";
 import { DropDown } from "../components/DropDown";
 import { Layout } from "../components/Layout";
@@ -13,7 +12,9 @@ export const DetailProduct = () => {
             src="https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
             alt=""
           />
-          <ImArrowLeft2 className="absolute top-3 left-3 w-7 h-7 shadow-2xl cursor-pointer" />
+          <Link to={"/"}>
+            <ImArrowLeft2 className="absolute top-3 left-3 w-7 h-7 shadow-2xl cursor-pointer" />
+          </Link>
           <div className="absolute top-3 right-2">
             <DropDown />
           </div>
