@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const [formLogin, setFormLogin] = useState({
@@ -57,7 +58,9 @@ export const Login = () => {
   return (
     <LayoutPlain>
       <div className="px-7 py-16">
-        <ImArrowLeft2 className="mb-7 h-7 w-7 cursor-pointer" />
+        <Link to={"/"}>
+          <ImArrowLeft2 className="mb-7 h-7 w-7 cursor-pointer" />
+        </Link>
         <h1
           style={{ fontFamily: "Montserrat Alternates" }}
           className="font-black text-4xl tracking-widest mb-28"
@@ -92,7 +95,9 @@ export const Login = () => {
           </button>
         </form>
         <p>Don’t have an account?</p>
-        <button className="font-bold">Sign up</button>
+        <Link to={"/signup"}>
+          <button className="font-bold">Sign up</button>
+        </Link>
         <p>using your email address</p>
       </div>
     </LayoutPlain>

@@ -12,7 +12,7 @@ export const AddProduct = () => {
     product_image: null,
   });
   // const fileInputRef = useRef(null);
-  const fileInputRef = React.createRef();
+  const fileInputRef: any = React.createRef();
 
   const navigate = useNavigate();
   const [isDisable, setIsDisable] = useState(true);
@@ -49,14 +49,15 @@ export const AddProduct = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // const formData = new FormData();
+    const formData: any = new FormData();
     // formData.append("product_image", formProduct.product_image);
-    // formData.append("name", formProduct.name);
-    // formData.append("description", formProduct.description);
-    // formData.append("price", formProduct.price);
-    // formData.append("stock", formProduct.stock);
+    formData.append("product_image", fileInputRef.current.files[0]);
+    formData.append("name", formProduct.name);
+    formData.append("description", formProduct.description);
+    formData.append("price", formProduct.price);
+    formData.append("stock", formProduct.stock);
     axios
-      .post("https://shirayuki.site/products", formProduct)
+      .post("https://bluepath.my.id/products", formData)
       .then((response) => {
         console.log(response);
 

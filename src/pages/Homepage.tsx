@@ -53,7 +53,6 @@ export const Homepage = () => {
           <img
             src="https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
             alt=""
-            className="aspect-square"
           />
           <Link to={"/detail-product/:id_user"}>
             <div className="text-left py-2 px-4">

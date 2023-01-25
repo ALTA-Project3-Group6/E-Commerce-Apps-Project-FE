@@ -5,6 +5,7 @@ import { FaUserAlt } from "react-icons/fa";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Signup = () => {
   const [formSignup, setFormSignup] = useState({
@@ -62,7 +63,9 @@ export const Signup = () => {
   return (
     <LayoutPlain>
       <div className="px-7 py-16">
-        <ImArrowLeft2 className="mb-7 h-7 w-7 cursor-pointer" />
+        <Link to={"/login"}>
+          <ImArrowLeft2 className="mb-7 h-7 w-7 cursor-pointer" />
+        </Link>
         <h1
           style={{ fontFamily: "Montserrat Alternates" }}
           className="font-black text-4xl tracking-widest mb-20"
