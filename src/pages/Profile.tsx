@@ -1,85 +1,46 @@
 import React from "react";
-import { LayoutPlain } from "../components/Layout";
-import { ImArrowLeft2 } from "react-icons/im";
-import {
-  MdEmail,
-  MdLock,
-  MdPhone,
-  MdLocationOn,
-  MdPhoto,
-} from "react-icons/md";
-import { FaUserAlt } from "react-icons/fa";
+import { LayoutNavigation } from "../components/Layout";
 
 const Profile = () => {
   return (
-    <LayoutPlain>
-      <div className="px-7 py-16">
-        <ImArrowLeft2 className="mb-7 h-7 w-7 cursor-pointer" />
-        <h4
-          style={{ fontFamily: "Lato" }}
-          className="font-black text-4xl tracking-widest mb-20"
-        >
-          EDIT PROFILE
-        </h4>
-        <div className="flex gap-7 items-center mb-6">
-          <MdEmail className="w-9 h-9" />
-          <input
-            type="email"
-            name="email"
-            className="w-full bg-[#F5F5F5] p-4"
-            placeholder="Email"
-          ></input>
+    <LayoutNavigation>
+      <div className="relative h-full">
+        <div className="px-3 font-medium">
+          <h1 className="pt-5 text-3xl mb-9 font-medium">PROFILE</h1>
+          <img
+            className="pt-5 mx-auto  w-20 rounded-full "
+            src="/src/assets/photo1.jpg"
+            alt=""
+          />
+          <div className="text-center mb-3 mt-5">
+            <p className="font-bold mb-1">John Doe</p>
+            <p className=" mb-1">USA</p>
+            <p className=" mb-1">082189897676</p>
+          </div>
+          <div className="flex justify-around">
+            <button className="btn rounded-none border-none w-40 font-normal mt-5  ">
+              Edit Profile
+            </button>
+            <button className="btn  border-none rounded-none w-40 font-normal mt-5 ">
+              Log Out
+            </button>
+          </div>
+          <div className="flex justify-around">
+            <button className="btn rounded-none bg-[#CD0404] text-white border-none w-40 font-normal mx-auto mt-5 ">
+              Delete Account
+            </button>
+          </div>
         </div>
-        <div className="flex gap-7 items-center mb-6">
-          <FaUserAlt className="w-9 h-9" />
-          <input
-            type="text"
-            name="name"
-            className="w-full bg-[#F5F5F5] p-4"
-            placeholder="Name"
-          ></input>
-        </div>
-        <div className="flex gap-7 items-center mb-6">
-          <MdLocationOn className="w-9 h-9" />
-          <input
-            type="text"
-            name="address"
-            className="w-full bg-[#F5F5F5] p-4"
-            placeholder="Address"
-          ></input>
-        </div>
-        <div className="flex gap-7 items-center mb-6">
-          <MdPhone className="w-9 h-9" />
-          <input
-            type="number"
-            name="phoneNumber"
-            className="w-full bg-[#F5F5F5] p-4"
-            placeholder="Phone Number"
-          ></input>
-        </div>
-        <div className="flex gap-7 items-center mb-20">
-          <MdPhoto className="w-9 h-9" />
-          <input type="file" className="file-input w-full max-w-xs" />
-        </div>
-        <div className="flex gap-7 items-center mb-6">
-          <MdLock className="w-9 h-9" />
-          <input
-            type="password"
-            name="password"
-            className="w-full bg-[#F5F5F5] p-4"
-            placeholder="Password"
-          ></input>
-        </div>{" "}
-        <div className="flex justify-around">
-          <button className="btn rounded-none border-none w-40 font-normal mt-20 ">
-            Cancel
+        <div className="absolute bottom-0 w-full">
+          <button className="btn rounded-none border-none font-normal h-16 w-full  mb-1 text-xl">
+            ADD PRODUCT
           </button>
-          <button className="btn bg-[#1F8A70] border-none rounded-none w-40 font-normal mt-20 ">
-            Save
+          <button className="btn rounded-none font-normal h-16 w-full text-xl">
+            TRANSACTION
           </button>
         </div>
       </div>
-    </LayoutPlain>
+    </LayoutNavigation>
   );
 };
 
