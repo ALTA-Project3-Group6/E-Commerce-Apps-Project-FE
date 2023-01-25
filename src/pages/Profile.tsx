@@ -38,18 +38,18 @@ const Profile = () => {
             </button>
           </div>
         </div>
-        <div className="absolute bottom-0 w-full">
-          <Link to={"/add-product"}>
-            <button className="btn rounded-none border-none font-normal h-16 w-full  mb-1 text-xl">
-              ADD PRODUCT
-            </button>
-          </Link>
-          <Link to={"/transaction-buy/:id_user"}>
-            <button className="btn rounded-none font-normal h-16 w-full text-xl">
-              TRANSACTION
-            </button>
-          </Link>
-        </div>
+      </div>
+      <div className="sticky bottom-0 w-full">
+        <Link to={"/add-product"}>
+          <button className="btn rounded-none border-none font-normal h-16 w-full  mb-1 text-xl">
+            ADD PRODUCT
+          </button>
+        </Link>
+        <Link to={"/transaction-buy/:id_user"}>
+          <button className="btn rounded-none font-normal h-16 w-full text-xl">
+            TRANSACTION
+          </button>
+        </Link>
       </div>
     </LayoutNavigation>
   );

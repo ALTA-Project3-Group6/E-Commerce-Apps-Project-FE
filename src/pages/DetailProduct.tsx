@@ -7,11 +7,14 @@ import axios from "axios";
 import { ProductType } from "../utils/types/e-commerce";
 import { BsThreeDots } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 export const DetailProduct = () => {
   const [product, setProduct] = useState<ProductType>();
   const { id_product } = useParams();
   const [stock, setStock] = useState(1);
+  const [cookie, , removeCookie] = useCookies(["token", "id_user", "name"]);
+  // const coookieUser = cookie.id_user;
 
   useEffect(() => {
     fetchDataProduct();
@@ -44,36 +47,38 @@ export const DetailProduct = () => {
           </Link>
           <div className="absolute top-3 right-2">
             {/* <DropDown editDetail={product?.id} /> */}
-            <div className="dropdown dropdown-end ">
-              <label tabIndex={0} className="cursor-pointer">
-                <BsThreeDots className="w-7 h-7 shadow-2xl" />
-              </label>
+            {cookie.id_user == product?.user.user_id && (
+              <div className="dropdown dropdown-end ">
+                <label tabIndex={0} className="cursor-pointer">
+                  <BsThreeDots className="w-7 h-7 shadow-2xl" />
+                </label>
 
-              {product?.id && (
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <a
-                      onClick={() => {
-                        onClickDetail(product.id);
-                      }}
-                    >
-                      Edit Product
-                    </a>
-                  </li>
-                  <li>
-                    <a>Delete Product</a>
-                  </li>
-                </ul>
-              )}
-            </div>
+                {product?.id && (
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <a
+                        onClick={() => {
+                          onClickDetail(product.id);
+                        }}
+                      >
+                        Edit Product
+                      </a>
+                    </li>
+                    <li>
+                      <a>Delete Product</a>
+                    </li>
+                  </ul>
+                )}
+              </div>
+            )}
           </div>
         </div>
         <div className="text-left p-5 border-b-1 border">
           <p className="text-[#6F7F8A] " style={{ fontFamily: "Lato" }}>
-            {product?.User.user_name}
+            {product?.user.user_name}
           </p>
           <p className="text-2xl">{product?.name}</p>
           <div className="flex justify-between mt-3">
