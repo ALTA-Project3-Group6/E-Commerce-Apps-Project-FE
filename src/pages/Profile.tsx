@@ -6,13 +6,18 @@ const Profile = () => {
     <LayoutNavigation>
       <div className="relative h-full">
         <div className="px-3 font-medium">
-          <h1 className="pt-5 text-3xl mb-9 font-medium">PROFILE</h1>
+          <h1
+            className="pt-11 text-3xl  font-bold bg-[#CD0404] mx-[-0.75rem] h-48 text-[#FFFFFF] "
+            style={{ fontFamily: "Lato" }}
+          >
+            PROFILE
+          </h1>
           <img
-            className="pt-5 mx-auto  w-20 rounded-full "
+            className=" mx-auto  w-20 rounded-full relative top-[-2.5rem] mb-[-2rem]"
             src="/src/assets/photo1.jpg"
             alt=""
           />
-          <div className="text-center mb-3 mt-5">
+          <div className="text-center mb-3 ">
             <p className="font-bold mb-1">John Doe</p>
             <p className=" mb-1">USA</p>
             <p className=" mb-1">082189897676</p>
