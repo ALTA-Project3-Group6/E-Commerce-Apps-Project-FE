@@ -1,7 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsThreeDots } from "react-icons/bs";
+import { FC, ButtonHTMLAttributes } from "react";
 
-export const DropDown = () => {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  editDetail?: number;
+}
+
+export const DropDown: FC<ButtonProps> = ({ editDetail }) => {
+  const navigate = useNavigate();
+
+  const onClickDetail = (index: number | any) => {
+    navigate(`/edit-product/${index}`);
+  };
   return (
     <div className="dropdown dropdown-end ">
       <label tabIndex={0} className="cursor-pointer">
@@ -13,9 +23,13 @@ export const DropDown = () => {
         className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
       >
         <li>
-          <Link to={"/edit-product/:id_product"}>
-            <a>Edit Product</a>
-          </Link>
+          <a
+            onClick={() => {
+              onClickDetail(editDetail);
+            }}
+          >
+            Edit Product
+          </a>
         </li>
         <li>
           <a>Delete Product</a>
