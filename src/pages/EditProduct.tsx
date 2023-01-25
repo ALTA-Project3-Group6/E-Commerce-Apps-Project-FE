@@ -80,11 +80,11 @@ export const EditProduct = () => {
             </button>
           </div>
         </div>
-        <div className="flex  absolute bottom-0 w-full">
-          <button className="btn rounded-none font-normal h-16 w-full text-xl rou">
-            SAVE PRODUCT
-          </button>
-        </div>
+      </div>
+      <div className="flex sticky bottom-0 w-full">
+        <button className="btn rounded-none font-normal h-16 w-full text-xl rou">
+          SAVE PRODUCT
+        </button>
       </div>
     </Layout>
   );

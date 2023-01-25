@@ -1,7 +1,7 @@
 export interface ContensType {}
 
 export interface ProductsType {
-  User: {
+  user: {
     user_id: number;
     user_name: string;
   };
@@ -14,7 +14,7 @@ export interface ProductsType {
 }
 
 export interface ProductType {
-  User: {
+  user: {
     user_id: number;
     user_name: string;
   };

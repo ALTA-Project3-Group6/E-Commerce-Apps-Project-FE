@@ -42,7 +42,7 @@ export const Homepage = () => {
                 className="text-[#6F7F8A] text-xs"
                 style={{ fontFamily: "Lato" }}
               >
-                {product.User.user_name}
+                {product.user.user_name}
               </p>
               <p className="text-sm w-[80%]">{product.name}</p>
             </div>

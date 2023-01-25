@@ -73,7 +73,7 @@ export const DetailProduct = () => {
         </div>
         <div className="text-left p-5 border-b-1 border">
           <p className="text-[#6F7F8A] " style={{ fontFamily: "Lato" }}>
-            {product?.User.user_name}
+            {product?.user.user_name}
           </p>
           <p className="text-2xl">{product?.name}</p>
           <div className="flex justify-between mt-3">
