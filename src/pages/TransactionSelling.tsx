@@ -6,22 +6,41 @@ import { orderType } from "../utils/types/e-commerce";
 
 export const TransactionSelling = () => {
   const [sales, setSales] = useState<orderType[]>([]);
+  const [refrash, setRefrash] = useState(false);
 
   useEffect(() => {
     fetchDataUser();
-  }, []);
+  }, [refrash]);
 
   function fetchDataUser() {
     axios
       .get("https://bluepath.my.id/sales")
       .then((res) => {
         setSales(res.data.data);
-        console.log(res.data.data);
+        // console.log(res.data.data);
       })
       .catch((err) => {
         alert(err.toString());
       });
   }
+
+  const handleProcess = (id: number) => {
+    // console.log(id);
+
+    axios
+      .put(`https://bluepath.my.id/orders/${id}`, { order_status: "delivery" })
+      .then((response) => {
+        // console.log(response);
+        setRefrash(!refrash);
+        alert("Processed");
+        // navigate("/login");
+      })
+      .catch((err) => {
+        alert(err.toString());
+        // console.log(id);
+      });
+  };
+
   return (
     <Layout>
       <div className="relative h-full">
@@ -46,16 +65,25 @@ export const TransactionSelling = () => {
                   <p>Total Transaction:</p>
                   <p className="font-bold">Rp. {sale.total_price}</p>
                 </div>
+                <div className="flex justify-between py-5">
+                  <p>Buyer: </p>
+                  <p className="font-bold"> {sale.buyer_name}</p>
+                </div>
                 <p className="pb-5">Order Status:</p>
                 <p className="font-bold text-right">{sale.order_status}</p>
               </div>
               <div className="flex justify-end">
-                {sale.order_status == "success" ? (
+                {sale.order_status == "deny" ||
+                sale.order_status == "cancelled" ||
+                sale.order_status == "delivery" ? (
                   <button className="btn rounded-none border-none font-normal h-12 w-20 bg-[#F0F0F0] text-xs mb-14 text-[#0F0F0F] btn-disabled ">
                     Proccess
                   </button>
                 ) : (
-                  <button className="btn rounded-none border-none font-normal h-12 w-20 bg-[#1F8A70] text-xs mb-14">
+                  <button
+                    className="btn rounded-none border-none font-normal h-12 w-20 bg-[#1F8A70] text-xs mb-14"
+                    onClick={() => handleProcess(sale.id)}
+                  >
                     Proccess
                   </button>
                 )}

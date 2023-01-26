@@ -25,7 +25,7 @@ const Profile = () => {
       .get("https://bluepath.my.id/users")
       .then((res) => {
         setUsers(res.data.data);
-        console.log(res.data.data);
+        // console.log(res.data.data);
       })
       .catch((err) => {
         alert(err.toString());

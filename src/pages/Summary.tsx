@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { cartType } from "../utils/types/e-commerce";
 import { useNavigate } from "react-router-dom";
+import { useCookies, Cookies, withCookies } from "react-cookie";
 
 export const Summary = () => {
   const [carts, setCarts] = useState<cartType[]>([]);
@@ -12,10 +13,11 @@ export const Summary = () => {
   });
   const [urlRedirect, setUrlRedirect] = useState("");
   const navigate = useNavigate();
+  const [cookie, , removeCookie] = useCookies(["address"]);
 
   useEffect(() => {
     fetchDataCart();
-    console.log(formOrder);
+    // console.log(formOrder);
     setFormOrder({ total_price: carts[0]?.price * carts[0]?.quantity });
     // setFormOrder({
     //   total_price: carts.reduce((a, b) => a + b.price * b.quantity, 0),
@@ -29,7 +31,7 @@ export const Summary = () => {
   }, [carts]);
 
   useEffect(() => {
-    console.log(urlRedirect);
+    // console.log(urlRedirect);
   }, [urlRedirect]);
 
   // useEffect(() => {
@@ -50,16 +52,10 @@ export const Summary = () => {
   };
 
   const handleSubmit = () => {
-    // event.preventDefault();
-    // const formData: any = new FormData();
-    // formData.append("product_image", formProduct.product_image);
-    // formData.append("total_price", carts[0]?.price * carts[0]?.quantity);
-
-    // setFormOrder({ total_price: carts[0]?.price * carts[0]?.quantity });
     axios
       .post("https://bluepath.my.id/orders", formOrder)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         // setUrlRedirect(response.data.data.redirect_url);
         // alert("Success signup");
         window.open(response.data.data.redirect_url);
@@ -119,11 +115,7 @@ export const Summary = () => {
           </div>
           <div className="text-left px-5">
             <p className="font-bold">Address:</p>
-            <p className="bg-[#F5F5F5] p-3">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-              commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-              penatibus et magnis dis{" "}
-            </p>
+            <p className="bg-[#F5F5F5] p-3">{cookie.address}</p>
           </div>
         </div>
         <div className=" absolute bottom-0 w-full">

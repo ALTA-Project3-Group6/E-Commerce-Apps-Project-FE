@@ -17,7 +17,7 @@ export const Homepage = () => {
       .get("https://bluepath.my.id/products")
       .then((res) => {
         setProducts(res.data.data);
-        console.log(res.data.data);
+        // console.log(res.data.data);
       })
       .catch((err) => {
         alert(err.toString());

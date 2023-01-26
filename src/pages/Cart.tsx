@@ -8,11 +8,12 @@ import { useCookies } from "react-cookie";
 
 export const Cart = () => {
   const [carts, setCarts] = useState<cartType[]>([]);
+  const [refrash, setRefrash] = useState(false);
 
   useEffect(() => {
     fetchDataCart();
-    console.log(carts);
-  }, []);
+    // console.log(carts);
+  }, [refrash]);
 
   const fetchDataCart = async () => {
     await axios
@@ -30,17 +31,35 @@ export const Cart = () => {
       .delete(`https://bluepath.my.id/carts`)
       .then((res) => {
         alert("Cart Cleared");
+        setRefrash(!refrash);
       })
       .catch((err) => {
         alert(err.toString());
       });
   };
 
-  const handleIncCart = () => {
+  const handleIncCart = (id: number, quantity: number) => {
+    let newQuantity = quantity;
+    newQuantity++;
     axios
-      .put(`https://bluepath.my.id/carts`)
+      .put(`https://bluepath.my.id/carts/${id}`, { quantity: newQuantity })
       .then((res) => {
-        alert("Cart Cleared");
+        // alert("added");
+        setRefrash(!refrash);
+      })
+      .catch((err) => {
+        alert(err.toString());
+      });
+  };
+
+  const handleDecCart = (id: number, quantity: number) => {
+    let newQuantity = quantity;
+    newQuantity--;
+    axios
+      .put(`https://bluepath.my.id/carts/${id}`, { quantity: newQuantity })
+      .then((res) => {
+        // alert("added");
+        setRefrash(!refrash);
       })
       .catch((err) => {
         alert(err.toString());
@@ -86,11 +105,17 @@ export const Cart = () => {
                   </div>
                 </div>
                 <div className="flex flex-col justify-center items-center">
-                  <button className="text-3xl w-12 bg-white rounded-xl border-4">
+                  <button
+                    className="text-3xl w-12 bg-white rounded-xl border-4"
+                    onClick={() => handleIncCart(cart.id, cart.quantity)}
+                  >
                     +
                   </button>
                   <p>{cart.quantity}</p>
-                  <button className="text-3xl w-12 bg-white rounded-xl border-4">
+                  <button
+                    className="text-3xl w-12 bg-white rounded-xl border-4"
+                    onClick={() => handleDecCart(cart.id, cart.quantity)}
+                  >
                     -
                   </button>
                 </div>
