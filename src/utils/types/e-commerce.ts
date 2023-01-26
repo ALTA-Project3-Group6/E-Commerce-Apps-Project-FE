@@ -35,3 +35,15 @@ export interface userType {
   password: string;
   profile_photo: string;
 }
+
+export interface orderType {
+  buyer_id: number;
+  buyer_name: string;
+  created_at: string;
+  id: number;
+  order_status: string;
+  seller_id: number;
+  seller_name: string;
+  total_price: number;
+  transaction_id: string;
+}
