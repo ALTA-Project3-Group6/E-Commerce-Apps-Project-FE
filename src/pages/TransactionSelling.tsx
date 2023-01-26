@@ -35,6 +35,7 @@ export const TransactionSelling = () => {
             </Link>
             <button className="btn rounded-none w-32 font-normal ">SELL</button>
           </div>
+          {sales.length === 0 && <a> No transaction</a>}
           {sales.map((sale) => (
             <div key={sale.id}>
               <div className="border-2 bg-[#F0F0F0] p-3 text-left border-[#D9D9D9]">
