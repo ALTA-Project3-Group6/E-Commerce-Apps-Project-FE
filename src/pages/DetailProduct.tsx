@@ -14,11 +14,16 @@ export const DetailProduct = () => {
   const { id_product } = useParams();
   const [stock, setStock] = useState(1);
   const [cookie, , removeCookie] = useCookies(["token", "id_user", "name"]);
+  const [formCart, setCart] = useState({
+    id_product: Number(id_product),
+    quantity: 1,
+  });
   // const coookieUser = cookie.id_user;
 
   useEffect(() => {
     fetchDataProduct();
-  }, []);
+    console.log(formCart);
+  }, [formCart]);
 
   const fetchDataProduct = async () => {
     await axios
@@ -36,6 +41,47 @@ export const DetailProduct = () => {
   const onClickDetail = (index: number) => {
     navigate(`/edit-product/${index}`);
   };
+
+  const handleAddCart = (event: React.FormEvent<HTMLFormElement>) => {
+    // const data = { id_product: product?.id, quantity: stock };
+    event.preventDefault();
+    axios
+      .post(`https://bluepath.my.id/carts`, formCart)
+      .then((res) => {
+        alert(res.data.message);
+        console.log(res);
+
+        // navigate("/cart");
+      })
+      .catch((err) => {
+        alert(err.toString());
+      });
+  };
+  const handleChange = (event: any) => {
+    setCart({
+      ...formCart,
+      [event.target.name]: parseInt(event.target.value),
+    });
+  };
+
+  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   if (rePassword != formSignup.password) {
+  //     alert("Password not match");
+  //     return;
+  //   }
+  //   axios
+  //     .post("https://bluepath.my.id/register", formSignup)
+  //     .then((response) => {
+  //       console.log(response);
+
+  //       alert("Success signup");
+  //       navigate("/login");
+  //     })
+  //     .catch((err) => {
+  //       alert(err.toString());
+  //     });
+  // };
 
   return (
     <Layout>
@@ -87,18 +133,23 @@ export const DetailProduct = () => {
           </div>
         </div>
         <p className="text-left p-5">{product?.description}</p>
-      </div>
-      <div className="flex  sticky  bottom-0 h-16">
-        <input
-          type="number"
-          name="stock"
-          value={stock}
-          onChange={(e) => setStock(Number(e.target.value))}
-          className="bg-[#F5F5F5] w-[15%] text-3xl font-bold px-4 text-center text-[#67686E] h-full"
-        />
-        <button className="btn rounded-none w-[85%] font-normal h-full text-xl">
-          ADD TO CART
-        </button>
+        <form onSubmit={handleAddCart}>
+          <div className="flex  sticky  bottom-0 h-16">
+            <input
+              type="number"
+              name="quantity"
+              defaultValue={formCart.quantity}
+              onChange={handleChange}
+              className="bg-[#F5F5F5] w-[15%] text-3xl font-bold px-4 text-center text-[#67686E] h-full"
+            />
+            <button
+              type="submit"
+              className="btn rounded-none w-[85%] font-normal h-full text-xl"
+            >
+              ADD TO CART
+            </button>
+          </div>
+        </form>
       </div>
     </Layout>
   );

@@ -47,3 +47,20 @@ export interface orderType {
   total_price: number;
   transaction_id: string;
 }
+
+export interface cartType {
+  id: number;
+  id_product: number;
+  id_user: number;
+  price: number;
+  product: {
+    id_product: number;
+    product_name: string;
+  };
+  product_image: string;
+  quantity: number;
+  seller: {
+    id_user: number;
+    user_name: string;
+  };
+}

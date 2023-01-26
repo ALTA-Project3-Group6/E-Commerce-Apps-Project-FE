@@ -35,6 +35,7 @@ export const TransactionBuying = () => {
               </button>
             </Link>
           </div>
+          {orders.length === 0 && <a> No transaction</a>}
           {orders.map((order) => (
             <div key={order.id}>
               <div className="border-2 bg-[#F0F0F0] p-3 text-left border-[#D9D9D9]">
