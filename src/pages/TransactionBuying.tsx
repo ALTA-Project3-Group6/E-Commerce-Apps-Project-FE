@@ -6,22 +6,41 @@ import { orderType } from "../utils/types/e-commerce";
 
 export const TransactionBuying = () => {
   const [orders, setOrders] = useState<orderType[]>([]);
+  const [refrash, setRefrash] = useState(false);
 
   useEffect(() => {
     fetchDataUser();
-  }, []);
+  }, [refrash]);
 
   function fetchDataUser() {
     axios
       .get("https://bluepath.my.id/orders")
       .then((res) => {
         setOrders(res.data.data);
-        console.log(res.data.data);
+        // console.log(res.data.data);
       })
       .catch((err) => {
         alert(err.toString());
       });
   }
+
+  const handleCancel = (id: number) => {
+    // console.log(id);
+
+    axios
+      .put(`https://bluepath.my.id/orders/${id}`, { order_status: "cancelled" })
+      .then((response) => {
+        // console.log(response);
+        setRefrash(!refrash);
+        alert("Order Canceled");
+        // navigate("/login");
+      })
+      .catch((err) => {
+        alert(err.toString());
+        // console.log(id);
+      });
+  };
+
   return (
     <Layout>
       <div className="relative h-full">
@@ -46,16 +65,25 @@ export const TransactionBuying = () => {
                   <p>Total Transaction:</p>
                   <p className="font-bold">Rp. {order.total_price}</p>
                 </div>
+                <div className="flex justify-between py-5">
+                  <p>Seller: </p>
+                  <p className="font-bold"> {order.seller_name}</p>
+                </div>
                 <p className="pb-5">Order Status:</p>
                 <p className="font-bold text-right">{order.order_status}</p>
               </div>
               <div className="flex justify-end">
-                {order.order_status == "success" ? (
+                {order.order_status == "success" ||
+                order.order_status == "deny" ||
+                order.order_status == "cancelled" ? (
                   <button className="btn rounded-none border-none font-normal h-12 w-20 bg-[#F0F0F0] text-xs mb-14 text-[#0F0F0F] btn-disabled ">
                     CANCEL ORDER
                   </button>
                 ) : (
-                  <button className="btn rounded-none border-none font-normal h-12 w-20 bg-[#CD0404] text-xs mb-14">
+                  <button
+                    className="btn rounded-none border-none font-normal h-12 w-20 bg-[#CD0404] text-xs mb-14"
+                    onClick={() => handleCancel(order.id)}
+                  >
                     CANCEL ORDER
                   </button>
                 )}

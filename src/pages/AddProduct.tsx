@@ -13,6 +13,7 @@ export const AddProduct = () => {
   });
   // const fileInputRef = useRef(null);
   const fileInputRef: any = React.createRef();
+  const [refrash, setRefrash] = useState(false);
 
   const navigate = useNavigate();
   const [isDisable, setIsDisable] = useState(true);
@@ -44,7 +45,7 @@ export const AddProduct = () => {
     } else {
       setIsDisable(false);
     }
-    console.log(formProduct);
+    // console.log(formProduct);
   }, [formProduct]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -59,8 +60,8 @@ export const AddProduct = () => {
     axios
       .post("https://bluepath.my.id/products", formData)
       .then((response) => {
-        console.log(response);
-
+        // console.log(response);
+        setRefrash(!refrash);
         alert("Success Add Product");
         navigate("/");
       })

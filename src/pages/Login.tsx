@@ -15,6 +15,7 @@ export const Login = () => {
   const navigate = useNavigate();
   const [submitClicked, setSubmitClicked] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
+  const [refrash, setRefrash] = useState(false);
 
   const handleChange = (event: any) => {
     setFormLogin({
@@ -26,6 +27,7 @@ export const Login = () => {
     "token",
     "id_user",
     "name",
+    "address",
   ]);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export const Login = () => {
     } else {
       setIsDisable(false);
     }
-    console.log(formLogin);
+    // console.log(formLogin);
     // if (submitClicked) {
     //   window.location.reload();
     // }
@@ -48,11 +50,13 @@ export const Login = () => {
         removeCookie("token", { path: "/" });
         removeCookie("id_user", { path: "/" });
         removeCookie("name", { path: "/" });
+        removeCookie("address", { path: "/" });
         setCookie("token", response.data.data.token, { path: "/" });
         setCookie("id_user", response.data.data.id, { path: "/" });
         setCookie("name", response.data.data.name, { path: "/" });
-        console.log(response.data, "aaa");
-        console.log(formLogin);
+        setCookie("address", response.data.data.address, { path: "/" });
+        // console.log(response.data, "aaa");
+        // console.log(formLogin);
 
         alert("Success Login");
         // setSubmitClicked(true);
@@ -60,7 +64,8 @@ export const Login = () => {
       })
       .catch((err) => {
         alert(err.toString());
-      });
+      })
+      .finally(() => window.location.reload());
   };
 
   return (

@@ -68,7 +68,7 @@ export const EditProduct = () => {
       .get(`https://bluepath.my.id/products/${id_product}`)
       .then((res) => {
         setProduct(res.data.data);
-        console.log(res.data.data);
+        // console.log(res.data.data);
       })
       .catch((err) => {
         alert(err.toString());
@@ -85,7 +85,7 @@ export const EditProduct = () => {
     axios
       .put(`https://bluepath.my.id/products/${id_product}`, formData)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
 
         alert("Success change Product");
         navigate("/");

@@ -22,7 +22,7 @@ export const DetailProduct = () => {
 
   useEffect(() => {
     fetchDataProduct();
-    console.log(formCart);
+    // console.log(formCart);
   }, [formCart]);
 
   const fetchDataProduct = async () => {
@@ -30,7 +30,7 @@ export const DetailProduct = () => {
       .get(`https://bluepath.my.id/products/${id_product}`)
       .then((res) => {
         setProduct(res.data.data);
-        console.log(res.data.data);
+        // console.log(res.data.data);
       })
       .catch((err) => {
         alert(err.toString());
@@ -49,7 +49,7 @@ export const DetailProduct = () => {
       .post(`https://bluepath.my.id/carts`, formCart)
       .then((res) => {
         alert(res.data.message);
-        console.log(res);
+        // console.log(res);
 
         // navigate("/cart");
       })

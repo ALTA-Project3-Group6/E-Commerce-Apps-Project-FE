@@ -52,7 +52,7 @@ const Profile = () => {
       .get("https://bluepath.my.id/users")
       .then((res) => {
         setUsers(res.data.data);
-        console.log(res.data.data);
+        // console.log(res.data.data);
       })
       .catch((err) => {
         alert.toString();
@@ -88,7 +88,7 @@ const Profile = () => {
     axios
       .put(`https://bluepath.my.id/users`, formData)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
 
         alert("Success change Profile");
         navigate(`/profile/${users?.id}`);
