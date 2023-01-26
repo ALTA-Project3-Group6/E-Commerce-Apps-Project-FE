@@ -14,6 +14,7 @@ import "../styles/App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import { CookiesProvider } from "react-cookie";
 
 const router = createBrowserRouter([
   {
@@ -57,11 +58,11 @@ const router = createBrowserRouter([
     element: <Summary />,
   },
   {
-    path: "/transaction-buy/:id_user",
+    path: "/transaction-buy",
     element: <TransactionBuying />,
   },
   {
-    path: "/transaction-sell/:id_user",
+    path: "/transaction-sell",
     element: <TransactionSelling />,
   },
 ]);
@@ -94,7 +95,11 @@ function App() {
     }
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <CookiesProvider>
+      <RouterProvider router={router} />
+    </CookiesProvider>
+  );
 }
 
 export default App;

@@ -87,18 +87,18 @@ export const DetailProduct = () => {
           </div>
         </div>
         <p className="text-left p-5">{product?.description}</p>
-        <div className="flex  sticky  bottom-0 h-16">
-          <input
-            type="number"
-            name="stock"
-            value={stock}
-            onChange={(e) => setStock(Number(e.target.value))}
-            className="bg-[#F5F5F5] w-[15%] text-3xl font-bold px-4 text-center text-[#67686E] h-full"
-          />
-          <button className="btn rounded-none w-[85%] font-normal h-full text-xl">
-            ADD TO CART
-          </button>
-        </div>
+      </div>
+      <div className="flex  sticky  bottom-0 h-16">
+        <input
+          type="number"
+          name="stock"
+          value={stock}
+          onChange={(e) => setStock(Number(e.target.value))}
+          className="bg-[#F5F5F5] w-[15%] text-3xl font-bold px-4 text-center text-[#67686E] h-full"
+        />
+        <button className="btn rounded-none w-[85%] font-normal h-full text-xl">
+          ADD TO CART
+        </button>
       </div>
     </Layout>
   );

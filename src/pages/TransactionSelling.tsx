@@ -8,7 +8,7 @@ export const TransactionSelling = () => {
         <div className="px-3 font-medium">
           <h1 className="pt-5 text-3xl mb-9 font-medium">TRANSACTION</h1>
           <div className="mb-9">
-            <Link to={"/transaction-buy/:id_user"}>
+            <Link to={"/transaction-buy"}>
               <button className="btn rounded-none w-32 font-normal bg-[#EEEEEE] border-none text-[#000000]">
                 BUY
               </button>
