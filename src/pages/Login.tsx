@@ -13,6 +13,7 @@ export const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
+  const [submitClicked, setSubmitClicked] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
 
   const handleChange = (event: any) => {
@@ -34,20 +35,27 @@ export const Login = () => {
       setIsDisable(false);
     }
     console.log(formLogin);
-  }, [formLogin]);
+    // if (submitClicked) {
+    //   window.location.reload();
+    // }
+  }, []);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     axios
       .postForm("https://bluepath.my.id/login", formLogin)
       .then((response) => {
         localStorage.setItem("token", response.data.data.token);
-        setCookie("token", response.data.data.token);
-        setCookie("id_user", response.data.data.id);
-        setCookie("name", response.data.data.name);
+        removeCookie("token", { path: "/" });
+        removeCookie("id_user", { path: "/" });
+        removeCookie("name", { path: "/" });
+        setCookie("token", response.data.data.token, { path: "/" });
+        setCookie("id_user", response.data.data.id, { path: "/" });
+        setCookie("name", response.data.data.name, { path: "/" });
         console.log(response.data, "aaa");
         console.log(formLogin);
 
         alert("Success Login");
+        // setSubmitClicked(true);
         navigate("/");
       })
       .catch((err) => {

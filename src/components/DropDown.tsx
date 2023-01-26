@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { BsThreeDots } from "react-icons/bs";
 import { FC, ButtonHTMLAttributes } from "react";
+import axios from "axios";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   editDetail?: number;
@@ -11,6 +12,18 @@ export const DropDown: FC<ButtonProps> = ({ editDetail }) => {
 
   const onClickDetail = (index: number | any) => {
     navigate(`/edit-product/${index}`);
+  };
+
+  const handleDeleteProduct = () => {
+    axios
+      .delete(`https://bluepath.my.id/users`)
+      .then((res) => {
+        alert("Account Deleted");
+        navigate("/login");
+      })
+      .catch((err) => {
+        alert(err.toString());
+      });
   };
   return (
     <div className="dropdown dropdown-end ">
@@ -32,7 +45,7 @@ export const DropDown: FC<ButtonProps> = ({ editDetail }) => {
           </a>
         </li>
         <li>
-          <a>Delete Product</a>
+          <a onClick={handleDeleteProduct}>Delete Product</a>
         </li>
       </ul>
     </div>

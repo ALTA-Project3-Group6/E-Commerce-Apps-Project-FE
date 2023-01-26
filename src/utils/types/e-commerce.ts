@@ -25,3 +25,13 @@ export interface ProductType {
   product_image: string;
   stock: number;
 }
+
+export interface userType {
+  id: number;
+  name: string;
+  email: string;
+  address: string;
+  phone_number: number;
+  password: string;
+  profile_photo: string;
+}
