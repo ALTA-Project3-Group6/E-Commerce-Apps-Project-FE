@@ -16,10 +16,10 @@ export const DropDown: FC<ButtonProps> = ({ editDetail }) => {
 
   const handleDeleteProduct = () => {
     axios
-      .delete(`https://bluepath.my.id/users`)
+      .delete(`https://bluepath.my.id/product/`)
       .then((res) => {
-        alert("Account Deleted");
-        navigate("/login");
+        alert("Product Deleted");
+        navigate("/");
       })
       .catch((err) => {
         alert(err.toString());

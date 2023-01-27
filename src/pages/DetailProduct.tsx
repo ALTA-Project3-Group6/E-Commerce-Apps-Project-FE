@@ -63,6 +63,17 @@ export const DetailProduct = () => {
       [event.target.name]: parseInt(event.target.value),
     });
   };
+  const handleDeleteProduct = () => {
+    axios
+      .delete(`https://bluepath.my.id/products/${id_product}`)
+      .then((res) => {
+        alert("Product Deleted");
+        navigate("/");
+      })
+      .catch((err) => {
+        alert(err.toString());
+      });
+  };
 
   // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
   //   event.preventDefault();
@@ -114,7 +125,7 @@ export const DetailProduct = () => {
                       </a>
                     </li>
                     <li>
-                      <a>Delete Product</a>
+                      <a onClick={handleDeleteProduct}>Delete Product</a>
                     </li>
                   </ul>
                 )}
