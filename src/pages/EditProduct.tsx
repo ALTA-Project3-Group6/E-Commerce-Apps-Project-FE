@@ -54,7 +54,7 @@ export const EditProduct = () => {
     axios
       .delete(`https://bluepath.my.id/products/${id_product}`)
       .then((res) => {
-        alert("Product Deleted");
+        alert(res.data.message);
         navigate("/");
       })
       .catch((err) => {
@@ -83,7 +83,7 @@ export const EditProduct = () => {
     axios
       .put(`https://bluepath.my.id/products/${id_product}`, formData)
       .then((response) => {
-        alert("Success change Product");
+        alert(response.data.message);
         navigate("/");
       })
       .catch((err) => {

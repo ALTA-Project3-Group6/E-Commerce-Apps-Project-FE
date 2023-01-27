@@ -49,7 +49,7 @@ export const Signup = () => {
     axios
       .post("https://bluepath.my.id/register", formSignup)
       .then((response) => {
-        alert("Success signup");
+        alert(response.data.message);
         navigate("/login");
       })
       .catch((err) => {

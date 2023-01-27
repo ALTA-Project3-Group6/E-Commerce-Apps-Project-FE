@@ -5,16 +5,11 @@ import { useEffect, useState } from "react";
 import { userType } from "../utils/types/e-commerce";
 import { useNavigate } from "react-router-dom";
 import { useCookies, Cookies, withCookies } from "react-cookie";
-import { instanceOf } from "prop-types";
 
 const Profile = () => {
   const [users, setUsers] = useState<userType>();
   const navigate = useNavigate();
   const [cookie, , removeCookie] = useCookies(["token", "id_user", "name"]);
-
-  // static propTypes = {
-  //   cookies: instanceOf(Cookies).isRequired
-  // };
 
   useEffect(() => {
     fetchDataUser();
@@ -25,7 +20,6 @@ const Profile = () => {
       .get("https://bluepath.my.id/users")
       .then((res) => {
         setUsers(res.data.data);
-        // console.log(res.data.data);
       })
       .catch((err) => {
         alert(err.toString());
@@ -36,7 +30,7 @@ const Profile = () => {
     axios
       .delete(`https://bluepath.my.id/users`)
       .then((res) => {
-        alert("Account Deleted");
+        alert(res.data.message);
         navigate("/login");
       })
       .catch((err) => {
@@ -52,7 +46,6 @@ const Profile = () => {
     removeCookie("token", { path: "/profile" });
     removeCookie("id_user", { path: "/profile" });
     removeCookie("name", { path: "/profile" });
-    // window.location.reload();
     navigate("/login");
   };
 

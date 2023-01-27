@@ -28,7 +28,7 @@ export const TransactionBuying = () => {
       .put(`https://bluepath.my.id/orders/${id}`, { order_status: "cancelled" })
       .then((response) => {
         setRefrash(!refrash);
-        alert("Order Canceled");
+        alert(response.data.message);
       })
       .catch((err) => {
         alert(err.toString());

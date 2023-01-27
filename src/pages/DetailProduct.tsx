@@ -59,7 +59,7 @@ export const DetailProduct = () => {
     axios
       .delete(`https://bluepath.my.id/products/${id_product}`)
       .then((res) => {
-        alert("Product Deleted");
+        alert(res.data.message);
         navigate("/");
       })
       .catch((err) => {
