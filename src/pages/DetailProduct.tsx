@@ -12,8 +12,7 @@ import { useCookies } from "react-cookie";
 export const DetailProduct = () => {
   const [product, setProduct] = useState<ProductType>();
   const { id_product } = useParams();
-  const [stock, setStock] = useState(1);
-  const [cookie, , removeCookie] = useCookies(["token", "id_user", "name"]);
+  const [cookie] = useCookies(["token", "id_user", "name"]);
   const [formCart, setCart] = useState({
     id_product: Number(id_product),
     quantity: 1,

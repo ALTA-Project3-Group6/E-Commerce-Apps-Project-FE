@@ -13,9 +13,7 @@ export const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
-  const [submitClicked, setSubmitClicked] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
-  const [refrash, setRefrash] = useState(false);
 
   const handleChange = (event: any) => {
     setFormLogin({
@@ -36,7 +34,7 @@ export const Login = () => {
     } else {
       setIsDisable(false);
     }
-  }, []);
+  }, [formLogin]);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     axios
@@ -95,7 +93,10 @@ export const Login = () => {
               value={formLogin.password}
             ></input>
           </div>
-          <button className="btn rounded-none w-44 font-normal mt-28 mb-24">
+          <button
+            className="btn rounded-none w-44 font-normal mt-28 mb-24"
+            disabled={isDisable}
+          >
             Sign in
           </button>
         </form>

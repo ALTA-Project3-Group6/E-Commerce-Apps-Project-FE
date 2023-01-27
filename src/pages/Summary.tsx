@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { cartType } from "../utils/types/e-commerce";
 import { useNavigate } from "react-router-dom";
-import { useCookies, Cookies, withCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 
 export const Summary = () => {
   const [carts, setCarts] = useState<cartType[]>([]);
@@ -13,7 +13,7 @@ export const Summary = () => {
   });
   const [urlRedirect, setUrlRedirect] = useState("");
   const navigate = useNavigate();
-  const [cookie, , removeCookie] = useCookies(["address"]);
+  const [cookie] = useCookies(["address"]);
 
   useEffect(() => {
     fetchDataCart();
