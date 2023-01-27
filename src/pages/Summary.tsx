@@ -63,11 +63,19 @@ export const Summary = () => {
             >
               <div className="flex gap-3">
                 <div className="w-40">
-                  <img
-                    src={cart.product_image}
-                    alt=""
-                    className="aspect-square"
-                  />
+                  {cart.product_image === "" ? (
+                    <img
+                      src="https://www.planetsports.asia/media/catalog/product/cache/1384ea813c36abc3a773dd6494b9b881/0/3/03-CONVERSE-FFSSBCON0-CON568498C-White.jpg"
+                      alt=""
+                      className="aspect-square"
+                    />
+                  ) : (
+                    <img
+                      src={cart.product_image}
+                      alt=""
+                      className="aspect-square"
+                    />
+                  )}
                 </div>
                 <div className=" text-left flex flex-col justify-between h-full ">
                   <div>

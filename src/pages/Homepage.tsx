@@ -32,7 +32,19 @@ export const Homepage = () => {
       <div className="grid grid-cols-2 divide-x divide-y border-b border-[#CCCCCC]">
         {products.map((product) => (
           <div key={product.id} className="border-[#CCCCCC] border-2">
-            <img src={product.product_image} alt="" className="aspect-square" />
+            {product.product_image === "" ? (
+              <img
+                src="https://www.planetsports.asia/media/catalog/product/cache/1384ea813c36abc3a773dd6494b9b881/0/3/03-CONVERSE-FFSSBCON0-CON568498C-White.jpg"
+                alt=""
+                className="aspect-square"
+              />
+            ) : (
+              <img
+                src={product.product_image}
+                alt=""
+                className="aspect-square"
+              />
+            )}
             <div
               className="text-left py-2 px-4 cursor-pointer"
               onClick={() => onClickDetail(product.id)}
