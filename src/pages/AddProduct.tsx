@@ -58,7 +58,7 @@ export const AddProduct = () => {
       .post("https://bluepath.my.id/products", formData)
       .then((response) => {
         setRefrash(!refrash);
-        alert("Success Add Product");
+        alert(response.data.message);
         navigate("/");
       })
       .catch((err) => {

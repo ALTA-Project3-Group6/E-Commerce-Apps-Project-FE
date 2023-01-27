@@ -87,7 +87,7 @@ const Profile = () => {
     axios
       .put(`https://bluepath.my.id/users`, formData)
       .then((response) => {
-        alert("Success change Profile");
+        alert(response.data.message);
         navigate(`/profile/${users?.id}`);
       })
       .catch((err) => {

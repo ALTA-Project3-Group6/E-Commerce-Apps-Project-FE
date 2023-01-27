@@ -49,7 +49,7 @@ export const Login = () => {
         setCookie("id_user", response.data.data.id, { path: "/" });
         setCookie("name", response.data.data.name, { path: "/" });
         setCookie("address", response.data.data.address, { path: "/" });
-        alert("Success Login");
+        alert(response.data.message);
         navigate("/");
       })
       .catch((err) => {

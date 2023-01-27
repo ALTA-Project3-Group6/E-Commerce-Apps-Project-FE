@@ -29,7 +29,7 @@ export const Cart = () => {
     axios
       .delete(`https://bluepath.my.id/carts`)
       .then((res) => {
-        alert("Cart Cleared");
+        alert(res.data.message);
         setRefrash(!refrash);
       })
       .catch((err) => {

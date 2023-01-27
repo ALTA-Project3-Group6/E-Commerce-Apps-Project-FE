@@ -28,7 +28,7 @@ export const TransactionSelling = () => {
       .put(`https://bluepath.my.id/orders/${id}`, { order_status: "delivery" })
       .then((response) => {
         setRefrash(!refrash);
-        alert("Processed");
+        alert("processed");
       })
       .catch((err) => {
         alert(err.toString());
