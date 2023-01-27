@@ -17,7 +17,6 @@ export const TransactionSelling = () => {
       .get("https://bluepath.my.id/sales")
       .then((res) => {
         setSales(res.data.data);
-        // console.log(res.data.data);
       })
       .catch((err) => {
         alert(err.toString());
@@ -25,19 +24,14 @@ export const TransactionSelling = () => {
   }
 
   const handleProcess = (id: number) => {
-    // console.log(id);
-
     axios
       .put(`https://bluepath.my.id/orders/${id}`, { order_status: "delivery" })
       .then((response) => {
-        // console.log(response);
         setRefrash(!refrash);
         alert("Processed");
-        // navigate("/login");
       })
       .catch((err) => {
         alert(err.toString());
-        // console.log(id);
       });
   };
 

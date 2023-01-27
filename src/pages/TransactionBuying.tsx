@@ -17,7 +17,6 @@ export const TransactionBuying = () => {
       .get("https://bluepath.my.id/orders")
       .then((res) => {
         setOrders(res.data.data);
-        // console.log(res.data.data);
       })
       .catch((err) => {
         alert(err.toString());
@@ -25,19 +24,14 @@ export const TransactionBuying = () => {
   }
 
   const handleCancel = (id: number) => {
-    // console.log(id);
-
     axios
       .put(`https://bluepath.my.id/orders/${id}`, { order_status: "cancelled" })
       .then((response) => {
-        // console.log(response);
         setRefrash(!refrash);
         alert("Order Canceled");
-        // navigate("/login");
       })
       .catch((err) => {
         alert(err.toString());
-        // console.log(id);
       });
   };
 

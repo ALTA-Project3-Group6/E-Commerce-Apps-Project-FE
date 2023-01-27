@@ -32,7 +32,6 @@ export const EditProduct = () => {
         stock: product.stock,
         product_image: product.product_image,
       });
-      // fileInputRef.current.value = product.product_image;
     }
   }, [product]);
 
@@ -68,7 +67,6 @@ export const EditProduct = () => {
       .get(`https://bluepath.my.id/products/${id_product}`)
       .then((res) => {
         setProduct(res.data.data);
-        // console.log(res.data.data);
       })
       .catch((err) => {
         alert(err.toString());
@@ -85,8 +83,6 @@ export const EditProduct = () => {
     axios
       .put(`https://bluepath.my.id/products/${id_product}`, formData)
       .then((response) => {
-        // console.log(response);
-
         alert("Success change Product");
         navigate("/");
       })
@@ -146,7 +142,6 @@ export const EditProduct = () => {
                 name="price"
                 className="bg-[#F5F5F5] p-4 text-center w-[20%]"
                 placeholder="Stock"
-                // onChange={handleChange}
                 onChange={(e) =>
                   setFormProduct({
                     ...formProduct,
@@ -163,19 +158,8 @@ export const EditProduct = () => {
               type="file"
               name="product_image"
               className="file-input flex"
-              // onChange={(e) =>
-              //   setFormProduct({
-              //     ...formProduct,
-              //     product_image: e.target.files[0],
-              //   })
-              // }
-              // onChange={handleChange}
-              // onChange={(e) => handleFileChange(e)}
               ref={fileInputRef}
               onChange={handleFileChange}
-              // ref={formProduct.product_image}
-              // ref={fileInputRef}
-              // value={formProduct.product_image}
               defaultValue={formProduct.product_image}
             />
             <div className="justify-end  flex mt-10">

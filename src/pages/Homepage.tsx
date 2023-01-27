@@ -17,7 +17,6 @@ export const Homepage = () => {
       .get("https://bluepath.my.id/products")
       .then((res) => {
         setProducts(res.data.data);
-        // console.log(res.data.data);
       })
       .catch((err) => {
         alert(err.toString());
@@ -44,7 +43,7 @@ export const Homepage = () => {
               >
                 {product.user.user_name}
               </p>
-              <p className="text-sm w-[80%]">{product.name}</p>
+              <p className="text-sm ">{product.name}</p>
             </div>
             <p className="text-right mr-1 font-bold mb-1">Rp.{product.price}</p>
           </div>
