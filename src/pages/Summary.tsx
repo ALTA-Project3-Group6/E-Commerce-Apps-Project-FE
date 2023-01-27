@@ -17,11 +17,7 @@ export const Summary = () => {
 
   useEffect(() => {
     fetchDataCart();
-    // console.log(formOrder);
     setFormOrder({ total_price: carts[0]?.price * carts[0]?.quantity });
-    // setFormOrder({
-    //   total_price: carts.reduce((a, b) => a + b.price * b.quantity, 0),
-    // });
   }, [formOrder.total_price]);
 
   useEffect(() => {
@@ -30,21 +26,12 @@ export const Summary = () => {
     });
   }, [carts]);
 
-  useEffect(() => {
-    // console.log(urlRedirect);
-  }, [urlRedirect]);
-
-  // useEffect(() => {
-  //   if (carts.length > 0)
-  // }, [carts]);
-
+  useEffect(() => {}, [urlRedirect]);
   const fetchDataCart = async () => {
     await axios
       .get(`https://bluepath.my.id/carts`)
       .then((res) => {
         setCarts(res.data.data);
-        // console.log(res.data.data);
-        // setFormOrder({ total_price: carts[0]?.price * carts[0]?.quantity });
       })
       .catch((err) => {
         alert(err.toString());
@@ -55,9 +42,6 @@ export const Summary = () => {
     axios
       .post("https://bluepath.my.id/orders", formOrder)
       .then((response) => {
-        // console.log(response);
-        // setUrlRedirect(response.data.data.redirect_url);
-        // alert("Success signup");
         window.open(response.data.data.redirect_url);
       })
       .then((res) => {

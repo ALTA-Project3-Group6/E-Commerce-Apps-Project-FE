@@ -18,11 +18,9 @@ export const DetailProduct = () => {
     id_product: Number(id_product),
     quantity: 1,
   });
-  // const coookieUser = cookie.id_user;
 
   useEffect(() => {
     fetchDataProduct();
-    // console.log(formCart);
   }, [formCart]);
 
   const fetchDataProduct = async () => {
@@ -30,7 +28,6 @@ export const DetailProduct = () => {
       .get(`https://bluepath.my.id/products/${id_product}`)
       .then((res) => {
         setProduct(res.data.data);
-        // console.log(res.data.data);
       })
       .catch((err) => {
         alert(err.toString());
@@ -43,15 +40,11 @@ export const DetailProduct = () => {
   };
 
   const handleAddCart = (event: React.FormEvent<HTMLFormElement>) => {
-    // const data = { id_product: product?.id, quantity: stock };
     event.preventDefault();
     axios
       .post(`https://bluepath.my.id/carts`, formCart)
       .then((res) => {
         alert(res.data.message);
-        // console.log(res);
-
-        // navigate("/cart");
       })
       .catch((err) => {
         alert(err.toString());
@@ -74,26 +67,6 @@ export const DetailProduct = () => {
         alert(err.toString());
       });
   };
-
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   if (rePassword != formSignup.password) {
-  //     alert("Password not match");
-  //     return;
-  //   }
-  //   axios
-  //     .post("https://bluepath.my.id/register", formSignup)
-  //     .then((response) => {
-  //       console.log(response);
-
-  //       alert("Success signup");
-  //       navigate("/login");
-  //     })
-  //     .catch((err) => {
-  //       alert(err.toString());
-  //     });
-  // };
-
   return (
     <Layout>
       <div className="relative h-full">
@@ -103,7 +76,6 @@ export const DetailProduct = () => {
             <ImArrowLeft2 className="absolute top-3 left-3 w-7 h-7 shadow-2xl cursor-pointer" />
           </Link>
           <div className="absolute top-3 right-2">
-            {/* <DropDown editDetail={product?.id} /> */}
             {cookie.id_user == product?.user.user_id && (
               <div className="dropdown dropdown-end ">
                 <label tabIndex={0} className="cursor-pointer">

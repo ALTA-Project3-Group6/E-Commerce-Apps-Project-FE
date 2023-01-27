@@ -38,7 +38,6 @@ export const Signup = () => {
     } else {
       setIsDisable(false);
     }
-    // console.log(formSignup);
   }, [formSignup]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -50,8 +49,6 @@ export const Signup = () => {
     axios
       .post("https://bluepath.my.id/register", formSignup)
       .then((response) => {
-        // console.log(response);
-
         alert("Success signup");
         navigate("/login");
       })

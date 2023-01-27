@@ -12,7 +12,6 @@ export const Cart = () => {
 
   useEffect(() => {
     fetchDataCart();
-    // console.log(carts);
   }, [refrash]);
 
   const fetchDataCart = async () => {
@@ -44,7 +43,6 @@ export const Cart = () => {
     axios
       .put(`https://bluepath.my.id/carts/${id}`, { quantity: newQuantity })
       .then((res) => {
-        // alert("added");
         setRefrash(!refrash);
       })
       .catch((err) => {
@@ -58,7 +56,6 @@ export const Cart = () => {
     axios
       .put(`https://bluepath.my.id/carts/${id}`, { quantity: newQuantity })
       .then((res) => {
-        // alert("added");
         setRefrash(!refrash);
       })
       .catch((err) => {

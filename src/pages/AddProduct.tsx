@@ -11,7 +11,6 @@ export const AddProduct = () => {
     stock: 0,
     product_image: null,
   });
-  // const fileInputRef = useRef(null);
   const fileInputRef: any = React.createRef();
   const [refrash, setRefrash] = useState(false);
 
@@ -45,13 +44,11 @@ export const AddProduct = () => {
     } else {
       setIsDisable(false);
     }
-    // console.log(formProduct);
   }, [formProduct]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData: any = new FormData();
-    // formData.append("product_image", formProduct.product_image);
     formData.append("product_image", fileInputRef.current.files[0]);
     formData.append("name", formProduct.name);
     formData.append("description", formProduct.description);
@@ -60,7 +57,6 @@ export const AddProduct = () => {
     axios
       .post("https://bluepath.my.id/products", formData)
       .then((response) => {
-        // console.log(response);
         setRefrash(!refrash);
         alert("Success Add Product");
         navigate("/");
@@ -120,7 +116,6 @@ export const AddProduct = () => {
                 name="price"
                 className="bg-[#F5F5F5] p-4 text-center w-[20%]"
                 placeholder="Stock"
-                // onChange={handleChange}
                 onChange={(e) =>
                   setFormProduct({
                     ...formProduct,
@@ -137,16 +132,7 @@ export const AddProduct = () => {
               type="file"
               name="product_image"
               className="file-input flex"
-              // onChange={(e) =>
-              //   setFormProduct({
-              //     ...formProduct,
-              //     product_image: e.target.files[0],
-              //   })
-              // }
-              // onChange={handleChange}
               onChange={(e) => handleFileChange(e)}
-              // ref={formProduct.product_image}
-              // ref={fileInputRef}
               ref={fileInputRef}
             />
           </div>

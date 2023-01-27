@@ -36,10 +36,6 @@ export const Login = () => {
     } else {
       setIsDisable(false);
     }
-    // console.log(formLogin);
-    // if (submitClicked) {
-    //   window.location.reload();
-    // }
   }, []);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -55,11 +51,7 @@ export const Login = () => {
         setCookie("id_user", response.data.data.id, { path: "/" });
         setCookie("name", response.data.data.name, { path: "/" });
         setCookie("address", response.data.data.address, { path: "/" });
-        // console.log(response.data, "aaa");
-        // console.log(formLogin);
-
         alert("Success Login");
-        // setSubmitClicked(true);
         navigate("/");
       })
       .catch((err) => {
